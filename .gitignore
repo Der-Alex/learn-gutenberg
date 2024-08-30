@@ -24,6 +24,7 @@ wp-config.php
 # Example plugin
 /plugins/hello.php
 /plugins/akismet
+/plugins/create-block-theme
 
 # Uploads
 /uploads/
