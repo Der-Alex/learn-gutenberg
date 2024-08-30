@@ -1,0 +1,54 @@
+version: "3.1"
+
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      UID: 1000
+      GID: 1000
+    entrypoint:
+      # Change the user id and group id for the www-data user to 1000 (or the specified UID and GID env variable)
+      # so that the container and the host can both read and write files
+      - /bin/sh
+      - -c
+      - |
+        usermod -u $${UID} www-data
+        groupmod -g $${GID} www-data
+        /usr/local/bin/docker-entrypoint.sh apache2-foreground
+    volumes:
+      # Use WordPress inside the persistent volume but use mounted volumes for the themes and plugins
+      # Alternatively comment them out and only mount specific plugins / themes into these folders
+      # - ./my-custom-theme:/var/www/html/wp-content/themes/my-custom-theme
+      - wordpress:/var/www/html
+      - ./themes:/var/www/html/wp-content/themes
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
