@@ -2,15 +2,98 @@
 	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
 	"settings": {
 		"appearanceTools": true,
+		"color": {
+			"custom": false,
+			"palette": [
+				{
+					"color": "#90a6ca",
+					"name": "Primary",
+					"slug": "primary"
+				},
+				{
+					"color": "#fbbf24",
+					"name": "Secondary",
+					"slug": "secondary"
+				},
+				{
+					"color": "#030303",
+					"name": "Black",
+					"slug": "black"
+				},
+				{
+					"color": "#fefefe",
+					"name": "White",
+					"slug": "white"
+				},
+				{
+					"color": "#ddd",
+					"name": "Grey Light",
+					"slug": "grey-100"
+				},
+				{
+					"color": "#888",
+					"name": "Grey Medium",
+					"slug": "grey-200"
+				},
+				{
+					"color": "#666",
+					"name": "Gry Dark",
+					"slug": "grey-300"
+				},
+				{
+					"color": "#84cc16",
+					"name": "Success",
+					"slug": "success"
+				},
+				{
+					"color": "#f59e0b",
+					"name": "Warning",
+					"slug": "warning"
+				},
+				{
+					"color": "#dc2626",
+					"name": "Error",
+					"slug": "error"
+				}
+			]
+		},
+		"custom": {
+			"fontSize": {
+				"xs": "0.75rem",
+				"s": "1rem",
+				"m": "1.25rem",
+				"lg": "1.5rem",
+				"xl": "1.75rem",
+				"xxl": "2rem"
+			}
+		},
 		"layout": {
-			"contentSize": "620px",
-			"wideSize": "1000px"
+			"contentSize": "50rem",
+			"wideSize": "62.5rem"
+		},
+		"position": {
+			"sticky": true
 		},
 		"spacing": {
-			"units": [ "%", "px", "em", "rem", "vh", "vw" ]
+			"units": [ "%", "px", "rem", "vh", "vw" ]
 		},
 		"typography": {
+			"fluid": true,
 			"fontFamilies": [
+				{
+					"fontFamily": "'Open Sans', sans-serif",
+					"name": "Primary",
+					"slug": "primary",
+					"fontFace": [
+						{
+							"fontFamily": "Open Sans",
+							"fontWeight": "300 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [ "file:./assets/fonts/OpenSans.ttf" ]
+						}
+					]
+				},
 				{
 					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
 					"name": "System Font",
@@ -18,7 +101,7 @@
 				}
 			]
 		},
-		"useRootPaddingAwareAlignments": true
+		"useRootPaddingAwareAlignments": false
 	},
 	"templateParts": [
 		{
